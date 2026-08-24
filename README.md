@@ -21,18 +21,18 @@ Module Odoo sur-mesure de gestion d'atelier automobile intégrant l'**ancrage et
 
 <p align="center">
   <b>1. Vue Kanban des Réparations</b><br>
-  <img src='https://github.com/Soukaina009/odoo-custom-auto-repair/blob/main/auto_repair_blockchain/docs/screenshots/kanban.png width="90%" alt="Kanban Odoo"/>
-</p>
+  <img width="1915" height="702" alt="kanban" src="https://github.com/user-attachments/assets/7141e20b-a2e9-4c30-acb1-843f82146dd2" />
+
 
 <p align="center">
   <b>2. Fiche Réparation & Preuve Blockchain</b><br>
-  <img src="docs/screenshots/form_blockchain.png" width="90%" alt="Fiche Odoo"/>
-</p>
+  <img width="1341" height="658" alt="form_blockchain" src="https://github.com/user-attachments/assets/09ccf7ab-206f-4223-95d1-9914b30c231d" />
+
 
 <p align="center">
   <b>3. Validation sur Sepolia Etherscan</b><br>
-  <img src="docs/screenshots/etherscan.png" width="90%" alt="Etherscan"/>
-</p>
+  <img width="1333" height="607" alt="etherscan" src="https://github.com/user-attachments/assets/32891486-7ce0-4890-b405-65e89d63af82" />
+
 
 ---
 
