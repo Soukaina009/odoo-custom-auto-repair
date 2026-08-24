@@ -21,7 +21,7 @@ Module Odoo sur-mesure de gestion d'atelier automobile intégrant l'**ancrage et
 
 <p align="center">
   <b>1. Vue Kanban des Réparations</b><br>
-  <img src="docs/screenshots/kanban.png" width="90%" alt="Kanban Odoo"/>
+  <img src='https://github.com/Soukaina009/odoo-custom-auto-repair/blob/main/auto_repair_blockchain/docs/screenshots/kanban.png width="90%" alt="Kanban Odoo"/>
 </p>
 
 <p align="center">
