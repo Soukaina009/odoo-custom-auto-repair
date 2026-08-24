@@ -3,8 +3,8 @@
     <data>
         <!-- Vue liste réparations -->
         <record id="view_reparation_list" model="ir.ui.view">
-            <field name="name">mecanicien_v2.reparation.list</field>
-            <field name="model">mecanicien_v2.reparation</field>
+            <field name="name">garage_blockchain.reparation.list</field>
+            <field name="model">garage_blockchain.reparation</field>
             <field name="arch" type="xml">
                 <list string="Réparations" 
                       decoration-info="state == 'planifie'" 
@@ -34,8 +34,8 @@
 
         <!-- Vue recherche/filtres réparations -->
         <record id="view_reparation_search" model="ir.ui.view">
-            <field name="name">mecanicien_v2.reparation.search</field>
-            <field name="model">mecanicien_v2.reparation</field>
+            <field name="name">garage_blockchain.reparation.search</field>
+            <field name="model">garage_blockchain.reparation</field>
             <field name="arch" type="xml">
                 <search string="Recherche Réparations">
                     <field name="name"/>
@@ -47,8 +47,8 @@
 
         <!-- Vue kanban réparations -->
         <record id="view_reparation_kanban" model="ir.ui.view">
-            <field name="name">mecanicien_v2.reparation.kanban</field>
-            <field name="model">mecanicien_v2.reparation</field>
+            <field name="name">garage_blockchain.reparation.kanban</field>
+            <field name="model">garage_blockchain.reparation</field>
             <field name="arch" type="xml">
                 <kanban default_group_by="state">
                     <field name="id"/>
@@ -89,8 +89,8 @@
 
         <!-- Vue calendrier réparations -->
         <record id="view_reparation_calendar" model="ir.ui.view">
-            <field name="name">mecanicien_v2.reparation.calendar</field>
-            <field name="model">mecanicien_v2.reparation</field>
+            <field name="name">garage_blockchain.reparation.calendar</field>
+            <field name="model">garage_blockchain.reparation</field>
             <field name="arch" type="xml">
                 <calendar string="Réparations" 
                           date_start="date_debut" 
@@ -106,8 +106,8 @@
 
         <!-- Vue pivot réparations -->
         <record id="view_reparation_pivot" model="ir.ui.view">
-            <field name="name">mecanicien_v2.reparation.pivot</field>
-            <field name="model">mecanicien_v2.reparation</field>
+            <field name="name">garage_blockchain.reparation.pivot</field>
+            <field name="model">garage_blockchain.reparation</field>
             <field name="arch" type="xml">
                 <pivot string="Analyse des réparations">
                     <field name="mecanicien_id" type="row"/>
@@ -120,8 +120,8 @@
 
         <!-- Vue graphique réparations -->
         <record id="view_reparation_graph" model="ir.ui.view">
-            <field name="name">mecanicien_v2.reparation.graph</field>
-            <field name="model">mecanicien_v2.reparation</field>
+            <field name="name">garage_blockchain.reparation.graph</field>
+            <field name="model">garage_blockchain.reparation</field>
             <field name="arch" type="xml">
                 <graph string="Statistiques réparations" type="bar">
                     <field name="mecanicien_id"/>
@@ -133,8 +133,8 @@
 
         <!-- Vue formulaire réparation -->
         <record id="view_reparation_form" model="ir.ui.view">
-            <field name="name">mecanicien_v2.reparation.form</field>
-            <field name="model">mecanicien_v2.reparation</field>
+            <field name="name">garage_blockchain.reparation.form</field>
+            <field name="model">garage_blockchain.reparation</field>
             <field name="arch" type="xml">
                 <form string="Réparation">
                     <header>
@@ -243,9 +243,9 @@
         </record>
 
         <!-- Action pour les réparations -->
-        <record id="action_reparation" model="ir.actions.act_window">
+       <record id="action_reparation" model="ir.actions.act_window">
             <field name="name">Réparations</field>
-            <field name="res_model">mecanicien_v2.reparation</field>
+            <field name="res_model">garage_blockchain.reparation</field>
             <field name="view_mode">kanban,list,form,calendar,pivot,graph</field>
             <field name="search_view_id" ref="view_reparation_search"/>
             <field name="context">{'search_default_filter_en_cours': 1}</field>

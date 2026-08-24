@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- 1. Mécaniciens (hr.employee) avec is_mecanicien à True -->
+        <record id="demo_mecanicien_1" model="hr.employee">
+            <field name="name">Youssef El Amrani</field>
+            <field name="job_title">Chef Mécanicien</field>
+            <field name="is_mecanicien">True</field>
+        </record>
+
+        <record id="demo_mecanicien_2" model="hr.employee">
+            <field name="name">Karim Benjelloun</field>
+            <field name="job_title">Spécialiste Électronique</field>
+            <field name="is_mecanicien">True</field>
+        </record>
+
+        <!-- 2. Voitures (garage_blockchain.voiture) -->
+        <record id="demo_voiture_1" model="garage_blockchain.voiture">
+            <field name="name">Dacia Logan (54321-A-1)</field>
+            <field name="marque">Dacia</field>
+            <field name="modele">Logan 1.5 dCi</field>
+            <field name="immatriculation">54321-A-1</field>
+            <field name="proprietaire">Ahmed Mansouri</field>
+            <field name="annee">2021</field>
+        </record>
+
+        <record id="demo_voiture_2" model="garage_blockchain.voiture">
+            <field name="name">Volkswagen Golf 7 (12345-B-6)</field>
+            <field name="marque">Volkswagen</field>
+            <field name="modele">Golf 7 2.0 TDI</field>
+            <field name="immatriculation">12345-B-6</field>
+            <field name="proprietaire">Sarra Bennani</field>
+            <field name="annee">2022</field>
+        </record>
+
+        <record id="demo_voiture_3" model="garage_blockchain.voiture">
+            <field name="name">Peugeot 208 (98765-D-1)</field>
+            <field name="marque">Peugeot</field>
+            <field name="modele">208 PureTech</field>
+            <field name="immatriculation">98765-D-1</field>
+            <field name="proprietaire">Omar Alami</field>
+            <field name="annee">2023</field>
+        </record>
+
+        <!-- 3. Réparations (garage_blockchain.reparation) -->
+        <record id="demo_rep_01" model="garage_blockchain.reparation">
+            <field name="name">REP-2026-001</field>
+            <field name="voiture_id" ref="demo_voiture_1"/>
+            <field name="mecanicien_id" ref="demo_mecanicien_1"/>
+            <field name="description">Vidange synthétique 5W30, changement du filtre à huile et bougies.</field>
+            <field name="blockchain_tx">0x8f3a1c9e4b7d2f5a6b8c9d0e1f2a3b4c5d6e7f8a</field>
+            <field name="blockchain_hash">0xa1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef</field>
+        </record>
+
+        <record id="demo_rep_02" model="garage_blockchain.reparation">
+            <field name="name">REP-2026-002</field>
+            <field name="voiture_id" ref="demo_voiture_2"/>
+            <field name="mecanicien_id" ref="demo_mecanicien_2"/>
+            <field name="description">Remplacement du kit d'embrayage bimasse et purge de freinage.</field>
+        </record>
+
+        <record id="demo_rep_03" model="garage_blockchain.reparation">
+            <field name="name">REP-2026-003</field>
+            <field name="voiture_id" ref="demo_voiture_3"/>
+            <field name="mecanicien_id" ref="demo_mecanicien_1"/>
+            <field name="description">Diagnostic électronique suite au voyant moteur allumé et contrôle ABS.</field>
+            <field name="blockchain_tx">0x3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c</field>
+            <field name="blockchain_hash">0xfe9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedc</field>
+        </record>
+
+    </data>
+</odoo>

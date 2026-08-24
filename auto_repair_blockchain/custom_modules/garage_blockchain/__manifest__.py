@@ -12,7 +12,9 @@
         'views/voiture_views.xml',
         'views/reparation_views.xml',
         'views/menu.xml',
+        'demo/demo_data.xml',
     ],
     'installable': True,
     'application': True,
+
 }

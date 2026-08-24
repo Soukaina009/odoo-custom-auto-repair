@@ -5,9 +5,9 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class Reparation(models.Model):
-    _name = 'mecanicien_v2.reparation'
+    _name = 'garage_blockchain.reparation'
     _description = "Réparation"
-    _inherit = ['mail.thread', 'mail.activity.mixin']  # ← AJOUTER CETTE LIGNE
+    _inherit = ['mail.thread', 'mail.activity.mixin'] 
     _order = 'date_debut desc'
 
     name = fields.Char(string="Référence", compute='_compute_name', store=True)
@@ -17,7 +17,7 @@ class Reparation(models.Model):
         required=True, 
         domain="[('is_mecanicien', '=', True)]"
     )
-    voiture_id = fields.Many2one('mecanicien_v2.voiture', string="Voiture", required=True)
+    voiture_id = fields.Many2one('garage_blockchain.voiture', string="Voiture", required=True)
     date_debut = fields.Datetime(string="Date début", required=True, default=fields.Datetime.now)
     date_fin = fields.Datetime(string="Date fin")
     duree = fields.Float(string="Durée (heures)", compute='_compute_duree', store=True)

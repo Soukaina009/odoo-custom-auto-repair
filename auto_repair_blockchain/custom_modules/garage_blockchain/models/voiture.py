@@ -2,7 +2,7 @@ from odoo import models, fields, api, exceptions
 from datetime import date
 
 class Voiture(models.Model):
-    _name = 'mecanicien_v2.voiture'
+    _name = 'garage_blockchain.voiture'
     _description = "Voiture"
     _order = 'name'
 
@@ -18,7 +18,7 @@ class Voiture(models.Model):
     couleur = fields.Char(string="Couleur")
     vin = fields.Char(string="Numéro VIN")
     date_mise_circulation = fields.Date(string="Mise en circulation")
-    reparation_ids = fields.One2many('mecanicien_v2.reparation', 'voiture_id', string="Réparations")
+    reparation_ids = fields.One2many('garage_blockchain.reparation', 'voiture_id', string="Réparations")
     nombre_reparations = fields.Integer(string="Nombre réparations", compute='_compute_stats', store=True)
     cout_total_reparations = fields.Float(string="Coût total", compute='_compute_stats', store=True)
     derniere_reparation = fields.Date(string="Dernière réparation", compute='_compute_stats', store=True)

@@ -3,8 +3,8 @@
     <data>
         <!-- Vue liste voitures -->
         <record id="view_voiture_list" model="ir.ui.view">
-            <field name="name">mecanicien_v2.voiture.list</field>
-            <field name="model">mecanicien_v2.voiture</field>
+            <field name="name">garage_blockchain.voiture.list</field>
+            <field name="model">garage_blockchain.voiture</field>
             <field name="arch" type="xml">
                 <list string="Voitures">
                     <field name="name"/>
@@ -25,8 +25,8 @@
 
         <!-- Vue recherche/filtres voitures -->
         <record id="view_voiture_search" model="ir.ui.view">
-            <field name="name">mecanicien_v2.voiture.search</field>
-            <field name="model">mecanicien_v2.voiture</field>
+            <field name="name">garage_blockchain.voiture.search</field>
+            <field name="model">garage_blockchain.voiture</field>
             <field name="arch" type="xml">
                 <search string="Recherche Voitures">
                     <field name="name"/>
@@ -43,8 +43,8 @@
 
         <!-- Vue kanban voitures -->
         <record id="view_voiture_kanban" model="ir.ui.view">
-            <field name="name">mecanicien_v2.voiture.kanban</field>
-            <field name="model">mecanicien_v2.voiture</field>
+            <field name="name">garage_blockchain.voiture.kanban</field>
+            <field name="model">garage_blockchain.voiture</field>
             <field name="arch" type="xml">
                 <kanban default_group_by="state">
                     <field name="name"/>
@@ -72,8 +72,8 @@
 
         <!-- Vue formulaire voiture -->
         <record id="view_voiture_form" model="ir.ui.view">
-            <field name="name">mecanicien_v2.voiture.form</field>
-            <field name="model">mecanicien_v2.voiture</field>
+            <field name="name">garage_blockchain.voiture.form</field>
+            <field name="model">garage_blockchain.voiture</field>
             <field name="arch" type="xml">
                 <form string="Voiture">
                     <sheet>
@@ -134,7 +134,7 @@
         <!-- Action pour les voitures -->
         <record id="action_voiture" model="ir.actions.act_window">
             <field name="name">Voitures</field>
-            <field name="res_model">mecanicien_v2.voiture</field>
+            <field name="res_model">garage_blockchain.voiture</field>
             <field name="view_mode">kanban,list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">

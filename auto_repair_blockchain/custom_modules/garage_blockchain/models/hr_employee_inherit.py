@@ -14,7 +14,7 @@ class HrEmployeeInherit(models.Model):
     ], string="Niveau d'expérience")
     date_embauche_atelier = fields.Date(string="Date d'embauche atelier")
     reparation_ids = fields.One2many(
-        'mecanicien_v2.reparation', 
+        'garage_blockchain.reparation', 
         'mecanicien_id', 
         string="Réparations",
         domain="[('mecanicien_id', '=', id)]"
