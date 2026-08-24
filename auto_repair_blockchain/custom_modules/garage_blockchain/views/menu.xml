@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menu principal Atelier -->
+        <menuitem id="menu_mecanicien_root" name="Atelier" sequence="1"/>
+        <!-- Sous-menu Mécaniciens -->
+        <menuitem id="menu_mecanicien_employe" name="Mécaniciens" parent="menu_mecanicien_root" action="mecanicien_v2.action_hr_employee_mecanicien" sequence="10"/>
+        <!-- Sous-menu Voitures -->
+        <menuitem id="menu_mecanicien_voiture" name="Voitures" parent="menu_mecanicien_root" action="mecanicien_v2.action_voiture" sequence="20"/>
+        <!-- Sous-menu Réparations -->
+        <menuitem id="menu_mecanicien_reparation" name="Réparations" parent="menu_mecanicien_root" action="mecanicien_v2.action_reparation" sequence="30"/>
+    </data>
+</odoo>

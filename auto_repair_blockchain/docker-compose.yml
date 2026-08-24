@@ -1,0 +1,96 @@
+# Docker-compose optimisé pour Windows
+# Fonctionne aussi sur Linux
+
+version: '3.8'
+
+services:
+  db_companyA:
+    image: postgres:15
+    container_name: pg-company-a
+    environment:
+      POSTGRES_DB: odoo_company_a
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: soukaina
+      # Optimisations pour Windows
+      # POSTGRES_INITDB_ARGS: "-c shared_buffers=256MB -c max_connections=200"
+      volumes:
+      - pg-data-companyA:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"  # Optionnel: pour pgAdmin
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  odoo:
+    build:
+      context: .
+      dockerfile: Dockerfile.odoo
+    container_name: odoo-company-a
+    depends_on:
+      db_companyA:
+        condition: service_healthy
+    ports:
+      - "8069:8069"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - odoo-data-companyA:/var/lib/odoo
+      - ./odoo.conf:/etc/odoo/odoo.conf:ro
+      - ./mecanicien:/mnt/extra-addons/mecanicien:ro
+      - ./mecanicien_v2:/mnt/extra-addons/mecanicien_v2:ro
+      - ./ai_agent:/mnt/extra-addons/ai_agent:ro
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8069"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  dapp:
+    build: 
+      context: ./dapp
+      dockerfile: Dockerfile
+    container_name: dapp-garage
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+    env_file: 
+      - ./dapp/.env
+    volumes:
+      - dapp-data:/app/data
+      - dapp-cache:/app/.cache
+    restart: always
+    depends_on:
+      - odoo
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - "9000:9000"
+      - "8000:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    restart: always
+
+volumes:
+  odoo-data-companyA:
+    driver: local
+  pg-data-companyA:
+    driver: local
+  dapp-data:
+    driver: local
+  dapp-cache:
+    driver: local
+  portainer-data:
+    driver: local
+
+networks:
+  default:
+    name: odoo-network
+    driver: bridge

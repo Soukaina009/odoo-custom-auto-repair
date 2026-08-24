@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vue liste voitures -->
+        <record id="view_voiture_list" model="ir.ui.view">
+            <field name="name">mecanicien_v2.voiture.list</field>
+            <field name="model">mecanicien_v2.voiture</field>
+            <field name="arch" type="xml">
+                <list string="Voitures">
+                    <field name="name"/>
+                    <field name="marque"/>
+                    <field name="modele"/>
+                    <field name="immatriculation"/>
+                    <field name="proprietaire"/>
+                    <field name="state" decoration-info="state == 'attente'" 
+                           decoration-warning="state == 'reparation'" 
+                           decoration-success="state == 'termine'"
+                           decoration-muted="state == 'livre'"/>
+                    <field name="nombre_reparations"/>
+                    <field name="cout_total_reparations"/>
+                    <field name="derniere_reparation"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vue recherche/filtres voitures -->
+        <record id="view_voiture_search" model="ir.ui.view">
+            <field name="name">mecanicien_v2.voiture.search</field>
+            <field name="model">mecanicien_v2.voiture</field>
+            <field name="arch" type="xml">
+                <search string="Recherche Voitures">
+                    <field name="name"/>
+                    <field name="marque"/>
+                    <field name="immatriculation"/>
+                    <field name="proprietaire"/>
+                    <filter string="En attente" name="filter_attente" domain="[('state', '=', 'attente')]"/>
+                    <filter string="En réparation" name="filter_reparation" domain="[('state', '=', 'reparation')]"/>
+                    <filter string="Terminée" name="filter_termine" domain="[('state', '=', 'termine')]"/>
+                    <filter string="Livrée" name="filter_livre" domain="[('state', '=', 'livre')]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Vue kanban voitures -->
+        <record id="view_voiture_kanban" model="ir.ui.view">
+            <field name="name">mecanicien_v2.voiture.kanban</field>
+            <field name="model">mecanicien_v2.voiture</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state">
+                    <field name="name"/>
+                    <field name="marque"/>
+                    <field name="modele"/>
+                    <field name="immatriculation"/>
+                    <field name="proprietaire"/>
+                    <field name="state"/>
+                    <field name="nombre_reparations"/>
+                    <field name="derniere_reparation"/>
+                    <templates>
+                        <t t-name="card">
+                            <strong><field name="name"/></strong>
+                            <div><field name="marque"/> <field name="modele"/></div>
+                            <div>Immatriculation : <field name="immatriculation"/></div>
+                            <div>Propriétaire : <field name="proprietaire"/></div>
+                            <div>État : <field name="state"/></div>
+                            <div>Réparations : <field name="nombre_reparations"/></div>
+                            <div>Dernière réparation : <field name="derniere_reparation"/></div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Vue formulaire voiture -->
+        <record id="view_voiture_form" model="ir.ui.view">
+            <field name="name">mecanicien_v2.voiture.form</field>
+            <field name="model">mecanicien_v2.voiture</field>
+            <field name="arch" type="xml">
+                <form string="Voiture">
+                    <sheet>
+                        <notebook>
+                            <page string="Informations générales">
+                                <group>
+                                    <field name="name" readonly="1"/>
+                                    <field name="marque"/>
+                                    <field name="modele"/>
+                                    <field name="annee"/>
+                                    <field name="immatriculation"/>
+                                    <field name="date_mise_circulation"/>
+                                    <field name="kilometrage"/>
+                                    <field name="couleur"/>
+                                    <field name="vin"/>
+                                </group>
+                                <group>
+                                    <field name="proprietaire"/>
+                                    <field name="telephone_proprietaire"/>
+                                    <field name="email_proprietaire"/>
+                                </group>
+                            </page>
+                            <page string="Historique réparations">
+                                <field name="reparation_ids">
+                                    <list>
+                                        <field name="date_debut"/>
+                                        <field name="mecanicien_id"/>
+                                        <field name="type_reparation"/>
+                                        <field name="cout_total"/>
+                                        <field name="state"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Mécaniciens">
+                                <field name="mecanicien_ids">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="specialite"/>
+                                        <field name="niveau_experience"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes"/>
+                            </page>
+                        </notebook>
+                        <group>
+                            <field name="state"/>
+                            <field name="nombre_reparations" readonly="1"/>
+                            <field name="cout_total_reparations" readonly="1"/>
+                            <field name="derniere_reparation" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action pour les voitures -->
+        <record id="action_voiture" model="ir.actions.act_window">
+            <field name="name">Voitures</field>
+            <field name="res_model">mecanicien_v2.voiture</field>
+            <field name="view_mode">kanban,list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créez votre première voiture !
+                </p>
+                <p>
+                    Ajoutez les véhicules à l'atelier et suivez leur historique de réparations.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

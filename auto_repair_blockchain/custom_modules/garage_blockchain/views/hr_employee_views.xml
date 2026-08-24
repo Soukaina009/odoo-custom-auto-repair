@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vue liste filtrée mécaniciens -->
+        <record id="view_hr_employee_mecanicien_list" model="ir.ui.view">
+            <field name="name">hr.employee.mecanicien.list</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <list string="Mécaniciens">
+                    <field name="name"/>
+                    <field name="specialite"/>
+                    <field name="niveau_experience"/>
+                    <field name="nombre_reparations"/>
+                    <field name="total_revenus_reparations"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vue kanban mécaniciens -->
+        <record id="view_hr_employee_mecanicien_kanban" model="ir.ui.view">
+            <field name="name">hr.employee.mecanicien.kanban</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="specialite">
+                    <field name="image_1920"/>
+                    <field name="name"/>
+                    <field name="specialite"/>
+                    <field name="niveau_experience"/>
+                    <field name="nombre_reparations"/>
+                    <field name="total_revenus_reparations"/>
+                    <templates>
+                        <t t-name="card">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('hr.employee', 'image_1920', record.id.raw_value)" alt="Photo"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                                <ul>
+                                    <li><field name="specialite"/></li>
+                                    <li><field name="niveau_experience"/></li>
+                                    <li>Réparations : <field name="nombre_reparations"/></li>
+                                    <li>Revenus : <field name="total_revenus_reparations"/> MAD</li>
+                                </ul>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Vue formulaire employé étendue -->
+        <record id="view_hr_employee_mecanicien_form" model="ir.ui.view">
+            <field name="name">hr.employee.mecanicien.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Informations Mécanicien">
+                        <group>
+                            <group>
+                                <field name="is_mecanicien"/>
+                                <field name="specialite"/>
+                                <field name="certifications"/>
+                            </group>
+                            <group>
+                                <field name="niveau_experience"/>
+                                <field name="date_embauche_atelier"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="nombre_reparations" readonly="1"/>
+                                <field name="total_revenus_reparations" readonly="1"/>
+                            </group>
+                        </group>
+                        <group string="Historique des réparations">
+                            <field name="reparation_ids" nolabel="1">
+                                <list>
+                                    <field name="date_debut"/>
+                                    <field name="voiture_id"/>
+                                    <field name="type_reparation"/>
+                                    <field name="cout_total"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <!-- Action pour les mécaniciens -->
+        <record id="action_hr_employee_mecanicien" model="ir.actions.act_window">
+            <field name="name">Mécaniciens</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">kanban,list,form</field>
+            <field name="domain">[('is_mecanicien', '=', True)]</field>
+            <field name="context">{'default_is_mecanicien': True}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créez votre premier mécanicien !
+                </p>
+                <p>
+                    Ajoutez les mécaniciens de votre atelier avec leurs spécialités et compétences.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
