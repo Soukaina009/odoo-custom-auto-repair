@@ -39,8 +39,7 @@ Module Odoo sur-mesure de gestion d'atelier automobile intégrant l'**ancrage et
 ## 🔗 Transaction Certifiée (Testnet)
 
 * **Transaction Hash :** `0xb8125677a3f97553e8b6171f5547ef37f8fee0c85d67b60fb7187e39cb594c5`
-* **Explorateur :** [Consulter la transaction sur Sepolia Etherscan]
-* (https://sepolia.etherscan.io/tx/b8125677a3f9f7553e8b6171f5547ef37f8fee0c85d67b60fb7187e39cb594c5)
+* **Explorateur :**[Consulter la transaction sur Sepolia Etherscan](https://sepolia.etherscan.io/tx/b8125677a3f9f7553e8b6171f5547ef37f8fee0c85d67b60fb7187e39cb594c5)
 
 ---
 
